@@ -1,9 +1,9 @@
 
 execute 'os init' do
     command <<'EOH'
-echo 'Asia/Tokyo' |tee /etc/timezone
+timedatectl set-timezone Asia/Tokyo
 apt-get update
 apt-get upgrade -y
 EOH
-    not_if 'cat /etc/timezone |grep Asia/Tokyo'
+    not_if 'timedatectl status |grep Asia/Tokyo'
 end
