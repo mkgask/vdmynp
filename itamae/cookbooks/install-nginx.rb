@@ -27,3 +27,7 @@ end
 remote_file '/etc/nginx/conf.d/default.conf' do
     source 'nginx/default.conf'
 end
+
+service 'nginx' do
+    action :start
+end
