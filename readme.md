@@ -3,7 +3,7 @@
 
 - Base: Vagrant
 - OS : Debian/jessie64
-- DB: MysQL (Debian apt Latest)
+- DB: MySQL (Debian apt Latest)
 - Front: nginx (nginx.org Latest)
 - Back: PHP 7.0.6 (with phpenv, php-build)
 
@@ -12,6 +12,7 @@
 user@host:~$ git clone https://github.com/mkgask/vmynp706.git
 user@host:~$ vagrant up
 user@host:~$ itamae ssh -h 192.168.33.15 -u vagrant itamae/roles/server-setup.rb
+user@host:~$ curl localhost/phpinfo.php
 ```
 
 Installation of [itamae](https://github.com/itamae-kitchen/itamae) is required
