@@ -53,9 +53,9 @@ sed -i 's%${prefix}%/home/vagrant/.phpenv/versions/7.0.6%' /tmp/php-build/source
 sed -i 's%${exec_prefix}%/home/vagrant/.phpenv/versions/7.0.6%' /tmp/php-build/source/7.0.6/sapi/fpm/php-fpm.service.edit
 sed -i 's%--nodaemonize%%' /tmp/php-build/source/7.0.6/sapi/fpm/php-fpm.service.edit
 cp /tmp/php-build/source/7.0.6/sapi/fpm/php-fpm.service.edit /etc/systemd/system/php-fpm.service
-echo '<?php phpinfo();' | tee /usr/share/nginx/html/phpinfo.php
+mkdir -p /usr/share/nginx/html && echo '<?php phpinfo();' | tee /usr/share/nginx/html/phpinfo.php
 EOH
-    not_if 'ls -la /etc/systemd/system |grep php-fpm.service'
+    not_if 'cat /usr/share/nginx/html/phpinfo.php |grep phpinfo();'
 end
 
 service 'php-fpm' do
